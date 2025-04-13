@@ -13,6 +13,7 @@ yarn-error.log*
 lerna-debug.log*
 
 generated/
+.github
 # OS
 .DS_Store
 
