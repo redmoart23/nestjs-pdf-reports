@@ -4,7 +4,7 @@ import { DateFormatter } from 'src/helpers';
 const logo: Content = {
   image: 'src/assets/tucan-code-logo.png',
   width: 100,
-  alignment: 'center',
+  alignment: 'left',
   margin: [0, 0, 0, 20],
 };
 
@@ -28,8 +28,12 @@ export const headerSection = (options: HeaderOptions): Content => {
     : '';
 
   const headerTitle: Content = title
-    ? { text: title, style: { bold: true } }
+    ? { text: title, style: { fontSize: 22, bold: true }, alignment: 'center' }
     : '';
 
-  return [headerLogo, headerTitle, subtitle, headerDate];
+  const headerSubtitle: Content = subtitle
+    ? { text: subtitle, style: { bold: true } }
+    : '';
+
+  return [headerLogo, headerTitle, headerSubtitle, headerDate];
 };

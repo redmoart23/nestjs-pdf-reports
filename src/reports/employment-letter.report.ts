@@ -29,7 +29,7 @@ export const getEmploymentLetterReport = (): TDocumentDefinitions => {
     pageMargins: [40, 60, 40, 60],
     header: headerSection({
       title: '',
-      subtitle: '',
+      subtitle: 'carta de empleo',
       showLogo: false,
       showDate: false,
     }),
