@@ -7,11 +7,24 @@ export class StoreReportsController {
   constructor(private readonly storeReportsService: StoreReportsService) {}
 
   @Get('orders/:orderId')
-  getOrderReport(@Res() response: Response, @Param('orderId') orderId: string) {
-    const pdfDoc = this.storeReportsService.getOrderByIdReport(orderId);
+  async getOrderReport(
+    @Res() response: Response,
+    @Param('orderId') orderId: number,
+  ) {
+    const pdfDoc = await this.storeReportsService.getOrderByIdReport(+orderId);
 
     response.setHeader('Content-Type', 'application/pdf');
     pdfDoc.info.Title = 'Order-Report';
+    pdfDoc.pipe(response);
+    pdfDoc.end();
+  }
+
+  @Get('svg-charts')
+  async getSvgChart(@Res() response: Response) {
+    const pdfDoc = await this.storeReportsService.getSvgChart();
+
+    response.setHeader('Content-Type', 'application/pdf');
+    pdfDoc.info.Title = 'Svg-Charts-Report';
     pdfDoc.pipe(response);
     pdfDoc.end();
   }
